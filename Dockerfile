@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 #FROM stencila/ubuntu-14.04
-MAINTAINER Helmi <helmi@tuxuri.com>
+MAINTAINER Helmi <xbarnada@gmail.com>
 RUN apt-get -y update
 RUN apt-get -y install python-dev npm
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
