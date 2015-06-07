@@ -23,13 +23,16 @@ RUN echo "deb http://ppa.launchpad.net/mapnik/nightly-2.3/ubuntu trusty main">>/
 RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4F7B93595D50B6BA
 RUN apt-get update
 
-RUN apt-get -y install mapnik-input-plugin-gdal mapnik-input-plugin-ogr mapnik-input-plugin-postgis mapnik-input-plugin-sqlite mapnik-input-plugin-osm python-pip ttf-dejavu ttf-dejavu-core ttf-dejavu-extra ttf-unifont osm2pgsql
+RUN apt-get -y install mapnik-input-plugin-gdal mapnik-input-plugin-ogr mapnik-input-plugin-postgis mapnik-input-plugin-sqlite mapnik-input-plugin-osm python-pip ttf-dejavu ttf-dejavu-core ttf-dejavu-extra ttf-unifont osm2pgsql curl bzip2
 
 COPY default.style /usr/share/osm2pgsql/default.style
 
 RUN npm install -g https://github.com/gisce/carto/archive/extends_zoom_level.tar.gz
 RUN pip install https://github.com/TileStache/TileStache/archive/master.zip sympy Blit uwsgi mapnik
 EXPOSE 5432
+
+ADD update.sh /update.sh
+RUN chmod 777 /update.sh
 
 ADD start.sh /start.sh
 ADD start_tilestache.py /start_tilestache.py

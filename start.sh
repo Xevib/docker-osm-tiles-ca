@@ -24,6 +24,9 @@ su postgres sh -c "$POSTGRES --single -D $DATADIR -c config_file=$CONF" <<< "CRE
 
 #fi
 
+if [ ! -d "/style/data" ];then
+	sh -c "/style/get-shapefiles.sh"
+fi
 trap "echo \"Sending SIGTERM to postgres\"; killall -s SIGTERM postgres" SIGTERM
 su postgres sh -c "uwsgi --http :8080 --eval 'import TileStache; application = TileStache.WSGITileServer(\"/mapserver.cfg\")'" &
 su postgres sh -c "$POSTGRES -D $DATADIR -c config_file=$CONF" &
