@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 #FROM stencila/ubuntu-14.04
-MAINTAINER Helmi <xbarnada@gmail.com>
+MAINTAINER Xavier Barnada <xbarnada@gmail.com>
 RUN apt-get -y update
 RUN apt-get -y install python-dev npm
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
@@ -23,7 +23,7 @@ RUN echo "deb http://ppa.launchpad.net/mapnik/nightly-2.3/ubuntu trusty main">>/
 RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4F7B93595D50B6BA
 RUN apt-get update
 
-RUN apt-get -y install mapnik-input-plugin-gdal mapnik-input-plugin-ogr mapnik-input-plugin-postgis mapnik-input-plugin-sqlite mapnik-input-plugin-osm python-pip ttf-dejavu ttf-dejavu-core ttf-dejavu-extra ttf-unifont osm2pgsql curl bzip2
+RUN apt-get -y install mapnik-input-plugin-gdal mapnik-input-plugin-ogr mapnik-input-plugin-postgis mapnik-input-plugin-sqlite mapnik-input-plugin-osm python-pip ttf-dejavu ttf-dejavu-core ttf-dejavu-extra ttf-unifont osm2pgsql curl bzip2 unzip mapnik-utils gdal-bin
 
 COPY default.style /usr/share/osm2pgsql/default.style
 
